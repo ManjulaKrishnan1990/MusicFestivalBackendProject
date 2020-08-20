@@ -1,62 +1,56 @@
-package com.infosis.controller;
+package com.infosis.service;
 
-import static org.mockito.Mockito.when;
-import static org.mockito.Mockito.verify;
+import com.infosis.dao.MusicFestivalDao;
+import com.infosis.model.Band;
+import com.infosis.model.Festival;
+import com.infosis.model.Record;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.junit.Assert;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.mockito.*;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.infosis.model.Festival;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-import org.mockito.Spy;
+import static javafx.beans.binding.Bindings.when;
 import static org.mockito.Mockito.atLeastOnce;
+import static org.mockito.Mockito.verify;
 
-import org.springframework.context.MessageSource;
-import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
-import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
-import com.infosis.model.Band;
-import com.infosis.model.Record;
-import com.infosis.service.MusicFestivalService;
-
-public class MusicFestivalControllerTest {
+public class MusicFestivalServiceTest {
     @Mock
-    MusicFestivalService service;
-
-    @Mock
-    MessageSource message;
+    MusicFestivalDao musicFestivalDao;
 
     @InjectMocks
-    MusicFestivalController musicFestivalController;
+    MusicFestivalServiceImpl musicFestivalService;
 
     @Spy
-    List<Record> records = new ArrayList<Record>();
-    JSONArray recordsArray = new JSONArray();
-
-    @Spy
-    ModelMap model;
-
-    @Mock
-    BindingResult result;
+    List<Band> bands = new ArrayList<Band>();
 
     @BeforeClass
     public void setUp(){
         MockitoAnnotations.initMocks(this);
-        records = getRecordList();
+        bands = listAllBands();
     }
 
     @Test
-    public void listRecords(){
-        when(service.listAllRecords()).thenReturn(recordsArray);
-        Assert.assertEquals(musicFestivalController.list(model), "allRecords");
-        Assert.assertEquals(model.get("records"), records);
-        verify(service, atLeastOnce()).listAllRecords();
+    public void findAllRecords(){
+        Mockito.when(musicFestivalDao.listAllBands()).thenReturn(bands);
+        org.testng.Assert.assertEquals(musicFestivalService.listAllbands(), "AllBands");
+    }
+
+    public List<Band> listAllBands() {
+        Band band1 = new Band();
+        Band band2 = new Band();
+        band1.setBrand_id(1);
+        band1.setBrandname("Brand Doxzy");
+        band1.setBrand_id(5);
+        band1.setBrandname("Brand Gibson");
+        bands.add(band1);
+        bands.add(band2);
+       return bands;
     }
 
     public JSONArray getRecordList(){
@@ -114,4 +108,3 @@ public class MusicFestivalControllerTest {
         return musicFestivalArray;
     }
 }
-

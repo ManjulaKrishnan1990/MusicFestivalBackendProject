@@ -45,9 +45,9 @@ public class MusicFestivalDaoImpl implements MusicFestivalDao {
     }
 
     @SuppressWarnings("rawtypes")
-	public List listAllBands() {
+	public List<Band> listAllBands() {
         Criteria criteria = getSession().createCriteria(Band.class);
-        return (List) criteria.list();
+        return (List<Band>) criteria.list();
     }
 
     @SuppressWarnings("rawtypes")

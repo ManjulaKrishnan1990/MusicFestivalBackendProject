@@ -30,46 +30,7 @@ public class MusicFestivalServiceImpl implements MusicFestivalService {
 	}
 	
 	public JSONArray listOfAllFestival() {
-		List<Record> records = musicFestivalDao.listAllRecords();
-		JSONArray recordArray = new JSONArray(); 
-		JSONArray banndArray = new JSONArray(); 
-		JSONArray festivalArray = new JSONArray(); 
-		JSONArray musicFestivalArray = new JSONArray(); 
-		if (!records.isEmpty()) {
-			for(Record record: records) {
-				JSONObject recordObject = new JSONObject();
-				recordObject.put("record_id", record.getRecord_id());
-				recordObject.put("record_name", record.getRecordname());
-				if (!record.getBands().isEmpty()) {
-					for(Band band: record.getBands()) {
-						JSONObject bandObject = new JSONObject();
-						bandObject.put("band_id", band.getBrand_id());
-						bandObject.put("band_name", band.getBrandname());
-						bandObject.put("record_name", record.getRecordname());
-						bandObject.put("record_id", record.getRecord_id());
-						if (!band.getFestivals().isEmpty()) {
-							for(Festival festival : band.getFestivals()) {
-								JSONObject festivalObject = new JSONObject();
-								festivalObject.put("festival_id", festival.getFestival_id());
-								festivalObject.put("festival_name", festival.getFestivalname());
-								festivalObject.put("band_name", band.getBrandname());
-								festivalObject.put("band_id", band.getBrand_id());
-								festivalArray.add(festivalObject);
-							}
-						}
-						bandObject.put("Festval", festivalArray);
-						banndArray.add(bandObject);
-					}
-				}
-				recordObject.put("Bands", banndArray);
-				recordArray.add(recordObject);
-			
-			}
-		}
-		musicFestivalArray.add(recordArray);
-		musicFestivalArray.add(banndArray);
-		musicFestivalArray.add(festivalArray);
-		return musicFestivalArray;
+	return null;
 		
 	}
 
@@ -82,10 +43,7 @@ public class MusicFestivalServiceImpl implements MusicFestivalService {
 		JSONArray festivalArray = new JSONArray(); 
 		JSONArray musicFestivalArray = new JSONArray(); 
 		for(Record record: records) {
-			
 			JSONObject recordObject = new JSONObject();
-			
-			
 			recordObject.put("record_id", record.getRecord_id());
 			recordObject.put("record_name", record.getRecordname());
 			recordArray.add(recordObject);

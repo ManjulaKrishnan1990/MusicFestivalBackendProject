@@ -33,11 +33,4 @@ public class MusicFestivalController {
         recordsArray = musicFestivalServce.listAllRecords();
         return recordsArray;  
     }
-	
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	 public @ResponseBody List<Record> listFestival(){
-		JSONArray recordsArray = new JSONArray();
-        recordsArray = musicFestivalServce.listOfAllFestival();
-        return recordsArray;  
-    }
 }

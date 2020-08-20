@@ -1,0 +1,11 @@
+com\infosis\dao\MusicFestivalDaoImpl.class
+com\infosis\config\WebInitializer.class
+com\infosis\model\Record.class
+com\infosis\dao\MusicFestivalDao.class
+com\infosis\controller\MusicFestivalController.class
+com\infosis\model\Band.class
+com\infosis\config\WebConfig.class
+com\infosis\service\MusicFestivalService.class
+com\infosis\model\Festival.class
+com\infosis\config\HibernateConfig.class
+com\infosis\service\MusicFestivalServiceImpl.class

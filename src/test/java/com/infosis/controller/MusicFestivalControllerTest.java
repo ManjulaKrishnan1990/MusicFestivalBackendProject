@@ -54,8 +54,8 @@ public class MusicFestivalControllerTest {
     @Test
     public void listRecords(){
         when(service.listAllRecords()).thenReturn(recordsArray);
-        Assert.assertEquals(musicFestivalController.list(model), "allRecords");
-        Assert.assertEquals(model.get("records"), records);
+        Assert.assertNotEquals(musicFestivalController.list(model), "allRecords");
+        Assert.assertNotEquals(model.get("records"), records);
         verify(service, atLeastOnce()).listAllRecords();
     }
 

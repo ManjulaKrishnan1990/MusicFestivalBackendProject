@@ -10,6 +10,7 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.mockito.*;
+import org.mockito.stubbing.OngoingStubbing;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -28,17 +29,16 @@ public class MusicFestivalServiceTest {
 
     @Spy
     List<Band> bands = new ArrayList<Band>();
-
-    @BeforeClass
-    public void setUp(){
-        MockitoAnnotations.initMocks(this);
-        bands = listAllBands();
-    }
+    Record record = new Record();
 
     @Test
     public void findAllRecords(){
-        Mockito.when(musicFestivalDao.listAllBands()).thenReturn(bands);
-        org.testng.Assert.assertEquals(musicFestivalService.listAllbands(), "AllBands");
+        record.setRecord_id(1);
+        record.setRecordname("Independent Star Records");
+        MockitoAnnotations.initMocks(this);
+        bands = listAllBands();
+        bands = musicFestivalDao.listBrandsByRecordId(record);
+        Assert.assertEquals(musicFestivalService.listAllbands(), bands);
     }
 
     public List<Band> listAllBands() {

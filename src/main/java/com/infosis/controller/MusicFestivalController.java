@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.infosis.model.Record;
 import com.infosis.service.MusicFestivalService;
 
-@CrossOrigin(origins = { "http://458386a3f940.ngrok.io"})
+@CrossOrigin(origins = { "http://32bf49cd9aac.ngrok.io"})
 @Controller
 @RequestMapping(value="/music")
 public class MusicFestivalController {

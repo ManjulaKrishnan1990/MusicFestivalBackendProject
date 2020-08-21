@@ -39,9 +39,6 @@ public class MusicFestivalControllerTest {
     List<Record> records = new ArrayList<Record>();
     JSONArray recordsArray = new JSONArray();
 
-    @Spy
-    ModelMap model;
-
     @Mock
     BindingResult result;
 
@@ -54,8 +51,7 @@ public class MusicFestivalControllerTest {
     @Test
     public void listRecords(){
         when(service.listAllRecords()).thenReturn(recordsArray);
-        Assert.assertNotEquals(musicFestivalController.list(model), "allRecords");
-        Assert.assertNotEquals(model.get("records"), records);
+        Assert.assertNotEquals(musicFestivalController.list(), "allRecords");
         verify(service, atLeastOnce()).listAllRecords();
     }
 

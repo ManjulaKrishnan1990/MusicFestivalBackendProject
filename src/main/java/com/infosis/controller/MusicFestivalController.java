@@ -29,7 +29,7 @@ public class MusicFestivalController {
 	}
 
 	@RequestMapping(value="/api/v1/festivals", method= RequestMethod.GET)
-    public @ResponseBody JSONArray list(ModelMap model){
+    public @ResponseBody JSONArray list(){
 		JSONArray recordsArray = new JSONArray();
         recordsArray = musicFestivalServce.listAllRecords();
         return recordsArray;  
